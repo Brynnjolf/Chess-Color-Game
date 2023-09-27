@@ -1,0 +1,24 @@
+h1 {
+    text-align: center
+}
+
+#squares {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.square {
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}
+
+#light-square {
+    background-color: rgb(252, 224, 174);
+}
+#dark-square {
+    background-color: rgb(255, 178, 44);
+}
