@@ -1,7 +1,7 @@
 const coordinate = document.getElementById("coordinate")
 const lightSquare = document.getElementById("light-square");
 const darkSquare = document.getElementById("dark-square");
-const scoreElement = document.getElementById("score");
+const retryButton = document.getElementById("retry-button")
 const letters = "abcdefgh";
 let userScore = 0;
 
@@ -25,7 +25,10 @@ function getColorFromCoordinate(coordinate) {
 }
 
 function setScore(score) {
+    const scoreElement = document.getElementById("score");
+    const scoreElementInRetrySection = document.getElementById("score-display")
     scoreElement.innerHTML = "Score: " + score;
+    scoreElementInRetrySection.innerHTML = score;
 }
 
 function checkAnswer(color, coordinate) {
@@ -33,13 +36,24 @@ function checkAnswer(color, coordinate) {
         userScore++;
         setScore(userScore);
     } else {
-        alert("incorrect!");
-        userScore = 0;
-        setScore(userScore);
+        showRetrySection("incorrect");
     }
 }
 
+function showRetrySection(reason) {
+    if(reason == "incorrect") {
+        document.getElementById("retry-section-title").innerHTML = "Sorry, Incorrect!"
+    } else if(reason == "timeout") {
+        document.getElementById("retry-section-title").innerHTML = "Time's up!"
+    }
+    document.getElementById('app').style.display = "none";
+    document.getElementById('retry-section').style.display = "block"
+}
 
+function showMainApp() {
+    document.getElementById('app').style.display = "block";
+    document.getElementById('retry-section').style.display = "none"
+}
 
 // set button handlers
 lightSquare.onclick = () => {
@@ -49,4 +63,10 @@ lightSquare.onclick = () => {
 darkSquare.onclick = () => {
     checkAnswer("dark", coordinate.innerHTML);
     coordinate.innerHTML = getRandomCoordinate();
+}
+
+retryButton.onclick = () => {
+    userScore = 0;
+    setScore(userScore);
+    showMainApp();
 }

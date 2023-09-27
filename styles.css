@@ -22,3 +22,16 @@ h1 {
 #dark-square {
     background-color: rgb(255, 178, 44);
 }
+
+
+
+/* retry section */
+#retry-section {
+    display: none;
+}
+
+#retry-button {
+    display: block;
+    margin: auto;
+    font-size: 36px;
+}
