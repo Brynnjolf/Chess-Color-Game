@@ -35,3 +35,10 @@ h1 {
     margin: auto;
     font-size: 36px;
 }
+
+/* Intro section */
+#start-button {
+    display: block;
+    margin: auto;
+    font-size: 36px;
+}

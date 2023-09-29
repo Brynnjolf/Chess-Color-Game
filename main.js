@@ -1,7 +1,8 @@
 const coordinate = document.getElementById("coordinate")
 const lightSquare = document.getElementById("light-square");
 const darkSquare = document.getElementById("dark-square");
-const retryButton = document.getElementById("retry-button")
+const startButton = document.getElementById("start-button");
+const retryButton = document.getElementById("retry-button");
 const letters = "abcdefgh";
 const TIMECONSTANT = 60;
 var time;
@@ -50,6 +51,7 @@ function showRetrySection(reason) {
         document.getElementById("retry-section-title").innerHTML = "Time's up!"
     }
     document.getElementById('app').style.display = "none";
+    document.getElementById('intro-section').style.display = "none";
     document.getElementById('retry-section').style.display = "block";
 
     if(timerId) {
@@ -57,8 +59,15 @@ function showRetrySection(reason) {
     }
 }
 
+function showIntroSection() {
+    document.getElementById('app').style.display = "none";
+    document.getElementById('intro-section').style.display = "block";
+    document.getElementById('retry-section').style.display = "none";
+}
+
 function showMainApp() {
     document.getElementById('app').style.display = "block";
+    document.getElementById('intro-section').style.display = "none";
     document.getElementById('retry-section').style.display = "none"
 }
 
@@ -74,6 +83,18 @@ function countdown() {
     document.getElementById('time').innerHTML = time;
 }
 
+function initGame() {
+    userScore = 0;
+    setScore(userScore);
+    time = TIMECONSTANT;
+    countdown(time)
+    timerId = setInterval(() => {
+        countdown(time)
+    }, 1000);
+    coordinate.innerHTML = getRandomCoordinate();
+    showMainApp();
+}
+
 // set button handlers
 lightSquare.onclick = () => {
     checkAnswer("light", coordinate.innerHTML);
@@ -85,25 +106,13 @@ darkSquare.onclick = () => {
 }
 
 window.onload = () => {
-    userScore = 0;
-    setScore(userScore);
-    time = TIMECONSTANT;
-    countdown(time)
-    timerId = setInterval(() => {
-        countdown(time)
-    }, 1000);
-    coordinate.innerHTML = getRandomCoordinate();
-    showMainApp();
+    showIntroSection();
 }
 
 retryButton.onclick = () => {
-    userScore = 0;
-    time = TIMECONSTANT;
-    countdown(time)
-    timerId = setInterval(() => {
-        countdown(time)
-    }, 1000);
-    setScore(userScore);
-    coordinate.innerHTML = getRandomCoordinate();
-    showMainApp();
+    initGame();
+}
+
+startButton.onclick = () => {
+    initGame();
 }
