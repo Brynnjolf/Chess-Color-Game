@@ -3,6 +3,9 @@ const lightSquare = document.getElementById("light-square");
 const darkSquare = document.getElementById("dark-square");
 const retryButton = document.getElementById("retry-button")
 const letters = "abcdefgh";
+const TIMECONSTANT = 60;
+var time;
+let timerId;
 let userScore = 0;
 
 function getRandomCoordinate() {
@@ -47,12 +50,28 @@ function showRetrySection(reason) {
         document.getElementById("retry-section-title").innerHTML = "Time's up!"
     }
     document.getElementById('app').style.display = "none";
-    document.getElementById('retry-section').style.display = "block"
+    document.getElementById('retry-section').style.display = "block";
+
+    if(timerId) {
+        clearInterval(timerId);
+    }
 }
 
 function showMainApp() {
     document.getElementById('app').style.display = "block";
     document.getElementById('retry-section').style.display = "none"
+}
+
+function countdown() {
+    if(time <= 0 && timerId)
+    {
+        clearInterval(timerId);
+        timerId = null;
+        showRetrySection("timeout")
+        return;
+    }
+    time--;
+    document.getElementById('time').innerHTML = time;
 }
 
 // set button handlers
@@ -65,8 +84,26 @@ darkSquare.onclick = () => {
     coordinate.innerHTML = getRandomCoordinate();
 }
 
-retryButton.onclick = () => {
+window.onload = () => {
     userScore = 0;
     setScore(userScore);
+    time = TIMECONSTANT;
+    countdown(time)
+    timerId = setInterval(() => {
+        countdown(time)
+    }, 1000);
+    coordinate.innerHTML = getRandomCoordinate();
+    showMainApp();
+}
+
+retryButton.onclick = () => {
+    userScore = 0;
+    time = TIMECONSTANT;
+    countdown(time)
+    timerId = setInterval(() => {
+        countdown(time)
+    }, 1000);
+    setScore(userScore);
+    coordinate.innerHTML = getRandomCoordinate();
     showMainApp();
 }
