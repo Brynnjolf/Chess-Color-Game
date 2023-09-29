@@ -31,7 +31,7 @@ function getColorFromCoordinate(coordinate) {
 function setScore(score) {
     const scoreElement = document.getElementById("score");
     const scoreElementInRetrySection = document.getElementById("score-display")
-    scoreElement.innerHTML = "Score: " + score;
+    scoreElement.innerHTML = score;
     scoreElementInRetrySection.innerHTML = score;
 }
 
