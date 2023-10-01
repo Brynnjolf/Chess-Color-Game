@@ -15,6 +15,10 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+#app {
+    display: none;
+}
+
 h1 {
     text-align: center;
     color: var(--color-text1);

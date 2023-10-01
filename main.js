@@ -108,11 +108,20 @@ function initGame() {
 // set button handlers
 lightSquare.onclick = () => {
     checkAnswer("light", coordinate.innerHTML);
-    coordinate.innerHTML = getRandomCoordinate();
+
+    let newCoordinate = getRandomCoordinate();
+    while(coordinate.innerHTML == newCoordinate) {
+        newCoordinate = getRandomCoordinate();
+    }
+    coordinate.innerHTML = newCoordinate;
 }
 darkSquare.onclick = () => {
     checkAnswer("dark", coordinate.innerHTML);
-    coordinate.innerHTML = getRandomCoordinate();
+    let newCoordinate = getRandomCoordinate();
+    while(coordinate.innerHTML == newCoordinate) {
+        newCoordinate = getRandomCoordinate();
+    }
+    coordinate.innerHTML = newCoordinate;
 }
 
 window.onload = () => {
