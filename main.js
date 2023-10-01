@@ -3,6 +3,11 @@ const lightSquare = document.getElementById("light-square");
 const darkSquare = document.getElementById("dark-square");
 const startButton = document.getElementById("start-button");
 const retryButton = document.getElementById("retry-button");
+
+const settingsButton = document.getElementById("settings-button");
+const closeSettingsButton = document.getElementById("close-settings-button")
+const modalBackgrounds = document.getElementsByClassName("modal-background")
+
 const letters = "abcdefgh";
 const TIMECONSTANT = 61;
 var time;
@@ -105,6 +110,14 @@ function initGame() {
     showMainApp();
 }
 
+function openSettingsMenu() {
+    document.getElementById("settings-menu").style.display = "flex";
+}
+
+function closeSettingsMenu() {
+    document.getElementById("settings-menu").style.display = "none";
+}
+
 // set button handlers
 lightSquare.onclick = () => {
     checkAnswer("light", coordinate.innerHTML);
@@ -134,4 +147,16 @@ retryButton.onclick = () => {
 
 startButton.onclick = () => {
     initGame();
+}
+
+settingsButton.onclick = () => {
+    openSettingsMenu();
+}
+
+closeSettingsButton.onclick = () => {
+    closeSettingsMenu();
+}
+
+modalBackgrounds[0].onclick = () => {
+    closeSettingsMenu();
 }

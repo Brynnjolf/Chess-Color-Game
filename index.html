@@ -7,6 +7,12 @@
     <title>Chess Colour Quiz</title>
 </head>
 <body>
+    <header>
+        <ul id="header-items">
+            <li>Restart</li>
+            <li id="settings-button">Settings</li>
+        </ul>
+    </header>
     <div id="intro-section">
         <h1>Welcome to the chess Colour Quiz!</h1>
         <button id="start-button">Start</button>
@@ -24,6 +30,14 @@
         <h1 id="retry-section-title">Sorry, incorrect.</h1>
         <h1>your score was: <span id="score-display"></span></h1>
         <button id="retry-button">Retry</button>
+    </div>
+    <div id="settings-menu">
+        <div class="modal-background"></div>
+        <div id="settings-content">
+            <div class="nav-bar">
+                <button id="close-settings-button">Close X</button>
+            </div>
+        </div>
     </div>
 <script src="main.js"></script>
 </body>
