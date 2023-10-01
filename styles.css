@@ -18,12 +18,17 @@
 
 body {
     background-color: var(--color-surface1);
-    
+    margin: 0;
 }
 
 header {
     height: 50px;
     background-color: var(--color-surface2);
+    margin-top: 0;
+}
+
+#header-items {
+    margin: 0;
 }
 
 #header-items {
@@ -168,4 +173,33 @@ button:hover {
 #settings-content .nav-bar button:hover {
     background-color: transparent;
     color: var(--color-text2);
-} 
+}
+
+
+@media (max-width: 1300px) {
+    #squares {
+        width: 25%;
+    }
+}
+
+@media (max-width: 900px) {
+    #squares {
+        width: 40%;
+    }
+}
+
+@media (max-width: 630px) {
+    #squares {
+        width: 50%;
+    }
+}
+@media (max-width: 530px) {
+    #squares {
+        width: 60%;
+    }
+}
+@media (max-width: 400px) {
+    #squares {
+        width: 75%;
+    }
+}
