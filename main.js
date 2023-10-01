@@ -4,7 +4,7 @@ const darkSquare = document.getElementById("dark-square");
 const startButton = document.getElementById("start-button");
 const retryButton = document.getElementById("retry-button");
 const letters = "abcdefgh";
-const TIMECONSTANT = 60;
+const TIMECONSTANT = 61;
 var time;
 let timerId;
 let userScore = 0;
@@ -80,7 +80,17 @@ function countdown() {
         return;
     }
     time--;
-    document.getElementById('time').innerHTML = time;
+    document.getElementById('time').innerHTML = formatTime(time);
+}
+
+function formatTime(SecondsRemaining) {
+    // returns a string in the format 0:00
+    let minutes = 0;
+    while(SecondsRemaining >= 60) {
+        minutes++;
+        SecondsRemaining-=60;
+    }
+    return minutes+":"+String(SecondsRemaining).padStart(2, '0');
 }
 
 function initGame() {
