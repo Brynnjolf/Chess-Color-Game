@@ -8,3 +8,6 @@ Create Help Section
 
 Settings Menu:
     - Adjust time
+
+
+New Mode idea. Chessboard shows a square, you guess if it is black or white.

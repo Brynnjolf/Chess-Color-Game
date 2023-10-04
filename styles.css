@@ -154,9 +154,13 @@ button:hover {
     height: 200px;
     background-color: var(--color-surface1);
     z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #settings-content .nav-bar {
+    width: 100%;
     display: flex;
     justify-content: right;
     align-items: center;
@@ -175,6 +179,9 @@ button:hover {
     color: var(--color-text2);
 }
 
+#time-control {
+    width: 50%;
+}
 
 @media (max-width: 1300px) {
     #squares {
